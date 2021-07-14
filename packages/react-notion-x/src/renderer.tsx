@@ -1,5 +1,4 @@
 import React from 'react'
-import mediumZoom from 'medium-zoom'
 import { ExtendedRecordMap } from 'notion-types'
 
 import {
@@ -74,14 +73,6 @@ export const NotionRenderer: React.FC<NotionRendererProps> = ({
   defaultPageCoverPosition,
   ...rest
 }) => {
-  const zoom =
-    typeof window !== 'undefined' &&
-    mediumZoom({
-      container: '.notion-viewport',
-      background: 'rgba(0, 0, 0, 0.8)',
-      margin: getMediumZoomMargin()
-    })
-
   return (
     <NotionContextProvider
       components={components}
@@ -99,7 +90,6 @@ export const NotionRenderer: React.FC<NotionRendererProps> = ({
       defaultPageIcon={defaultPageIcon}
       defaultPageCover={defaultPageCover}
       defaultPageCoverPosition={defaultPageCoverPosition}
-      zoom={zoom}
     >
       <NotionBlockRenderer {...rest} />
     </NotionContextProvider>
@@ -135,22 +125,4 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({
       ))}
     </Block>
   )
-}
-
-function getMediumZoomMargin() {
-  const width = window.innerWidth
-
-  if (width < 500) {
-    return 8
-  } else if (width < 800) {
-    return 20
-  } else if (width < 1280) {
-    return 30
-  } else if (width < 1600) {
-    return 40
-  } else if (width < 1920) {
-    return 48
-  } else {
-    return 72
-  }
 }
