@@ -1,7 +1,29 @@
 {
-  "extends": "../../tsconfig.base",
   "compilerOptions": {
     "composite": true,
+    "incremental": true,
+    // "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "isolatedModules": true,
+    "traceResolution": false,
+    "listEmittedFiles": false,
+    "listFiles": false,
+    "pretty": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "*": ["types/*"]
+    },
     "rootDir": "src",
     "outDir": "build/esm",
     "tsBuildInfoFile": "build/esm/index.tsbuildinfo",
@@ -11,6 +33,5 @@
     "skipLibCheck": true,
     "jsx": "react"
   },
-  "include": ["src"],
-  "references": [{ "path": "../notion-types" }, { "path": "../notion-utils" }]
+  "include": ["src"]
 }
